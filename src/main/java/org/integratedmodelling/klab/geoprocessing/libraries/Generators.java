@@ -1,14 +1,10 @@
 package org.integratedmodelling.klab.geoprocessing.libraries;
 
-import java.util.List;
-
-import org.integratedmodelling.klab.Version;
 import org.integratedmodelling.klab.api.data.mediation.impl.Range;
 import org.integratedmodelling.klab.api.geometry.Geometry;
 import org.integratedmodelling.klab.api.geometry.Geometry.Dimension;
 import org.integratedmodelling.klab.api.geometry.Offset;
 import org.integratedmodelling.klab.api.geometry.Scanner2D;
-import org.integratedmodelling.klab.api.knowledge.Artifact;
 import org.integratedmodelling.klab.api.knowledge.Artifact.Type;
 import org.integratedmodelling.klab.api.knowledge.observation.State;
 import org.integratedmodelling.klab.api.lang.ServiceCall;
@@ -19,6 +15,8 @@ import org.integratedmodelling.klab.api.services.runtime.extension.Resolver;
 import org.integratedmodelling.klab.geoprocessing.GeoprocessingComponent;
 import org.integratedmodelling.klab.geoprocessing.algorithms.Terrain;
 import org.integratedmodelling.klab.runtime.storage.DoubleStorage;
+
+import java.util.List;
 
 @Library(name = "klab.geospatial.generators", description = "Contextualizers that generate realistic geographic " +
         "terrains and features for stress-testing")
@@ -51,7 +49,8 @@ public class Generators {
                     range.getLowerBound(), range.getUpperBound());
 
             /*
-             appropriate pattern for generic scale when we handle only one dimension. Adapt each sub-scale to grid
+             appropriate pattern for generic scale when we handle only one dimension, even if in most situations (all
+              at the moment) only one subscale will be returned. Inside the loop, adapt each sub-scale to a grid
              scanner for speed. The geometry requirement ensures that we get a regular 2D spatial extent.
             */
             for (Geometry subscale : scope.getGeometry().without(Dimension.Type.SPACE)) {
