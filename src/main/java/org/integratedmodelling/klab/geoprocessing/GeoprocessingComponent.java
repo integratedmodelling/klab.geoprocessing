@@ -1,9 +1,14 @@
 package org.integratedmodelling.klab.geoprocessing;
 
+import org.integratedmodelling.klab.Version;
+import org.integratedmodelling.klab.api.extensions.Component;
 import org.pf4j.Plugin;
 import org.pf4j.PluginWrapper;
 
+@Component(id = "klab.geoprocessing", version = GeoprocessingComponent.VERSION)
 public class GeoprocessingComponent extends Plugin {
+
+    public static final String VERSION = "1.0.0-SNAPSHOT";
 
     public GeoprocessingComponent(PluginWrapper wrapper) {
         super(wrapper);
@@ -12,7 +17,7 @@ public class GeoprocessingComponent extends Plugin {
 
     @Override
     public void start() {
-        // TODO Auto-generated method stub
+        // TODO build available service catalog (Geoserver, PostGIS, GDAL etc)
         super.start();
     }
 
