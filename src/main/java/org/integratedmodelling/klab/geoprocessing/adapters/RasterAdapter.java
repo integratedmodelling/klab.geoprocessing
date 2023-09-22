@@ -11,23 +11,20 @@ import org.integratedmodelling.klab.api.knowledge.Artifact.Type;
 import org.integratedmodelling.klab.api.knowledge.Observable;
 import org.integratedmodelling.klab.api.knowledge.Resource;
 import org.integratedmodelling.klab.api.scope.Scope;
-import org.integratedmodelling.klab.api.services.resources.adapters.Encoder;
 import org.integratedmodelling.klab.api.services.resources.adapters.Parameter;
 import org.integratedmodelling.klab.api.services.resources.adapters.ResourceAdapter;
-import org.integratedmodelling.klab.api.services.resources.adapters.Validator;
-import org.integratedmodelling.klab.api.services.resources.adapters.Validator.LifecyclePhase;
 import org.integratedmodelling.klab.api.services.runtime.Notification;
 
 @ResourceAdapter(name = "raster", threadsafe = true, type = {Type.NUMBER, Type.CONCEPT, Type.TEXT, Type.BOOLEAN}, parameters = {
         @Parameter(name = "fileUrl", type = Type.URL)})
 public class RasterAdapter {
 
-    @Encoder
+    @ResourceAdapter.Encoder
     public KlabData encode(Observable observable, Resource resource, Parameters<String> urnParameters) {
         return null;
     }
 
-    @Validator(phase = LifecyclePhase.LocalImport)
+    @ResourceAdapter.Validator(phase = ResourceAdapter.Validator.LifecyclePhase.LocalImport)
     public Collection<Notification> validateLocal(File resource, Scope scope) {
         List<Notification> ret = new ArrayList<>();
         return ret;
